@@ -8,7 +8,7 @@ pipeline{
             steps {
                 sh 'mkdir -p AndroidSampleApp'
                 dir("AndroidSampleApp"){
-                    git branch:'master', url:'git@github.com:princeqjzh/AndroidSampleApp.git'
+                    git branch:'master', url:'git@github.com:dkaiyue/AndroidSampleApp.git'
                 }
             }
         }
@@ -49,7 +49,7 @@ pipeline{
             steps {
                 sh 'mkdir -p iAppBVT'
                 dir("iAppBVT"){
-                    git branch:'master', url:'git@github.com:princeqjzh/iAppBVT.git'
+                    git branch:'master', url:'git@github.com:dkaiyue/iAppBVT.git'
                 }
             }
         }
@@ -69,9 +69,6 @@ pipeline{
     post {
         success {
             archiveArtifacts artifacts: 'AndroidSampleApp/app/build/outputs/apk/debug/app-debug.apk'
-        }
-        always {
-            emailext body: '$DEFAULT_CONTENT', recipientProviders: [[$class: 'RequesterRecipientProvider']], subject: '$DEFAULT_SUBJECT'
         }
     }
 }
